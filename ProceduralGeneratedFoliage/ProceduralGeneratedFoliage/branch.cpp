@@ -1,12 +1,14 @@
 #include "branch.h"
 
-branch::branch(sf::Vector2f branchSize, sf::Vector2f branchPos, float branchRot) {
+branch::branch(sf::Vector2f branchSize, sf::Vector2f branchPos, float branchRot, sf::Color branchColor) {
 	Size = branchSize;
 	Pos = branchPos;
 	Rot = branchRot;
+	Color = branchColor;
 	setBranchSize();
 	setBranchPos();
 	setBranchRot();
+	setBranchColor();
 }
 
 void branch::setBranchSize() {
@@ -19,6 +21,10 @@ void branch::setBranchPos() {
 
 void branch::setBranchRot() {
 	Line.setRotation(Rot);
+}
+
+void branch::setBranchColor() {
+	Line.setFillColor(Color);
 }
 
 void branch::updateBranchSize(sf::Vector2f branchSize) {

@@ -8,6 +8,7 @@ class foliage {
 	string mySentence;
 	LSystem myLSystem;
 
+	sf::Color myColor = sf::Color(116, 255, 135);
 	sf::Vector2f currBranchSize;
 	sf::Vector2f currLoc;
 	float currRot;

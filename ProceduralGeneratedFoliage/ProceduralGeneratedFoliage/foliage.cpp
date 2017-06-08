@@ -28,7 +28,7 @@ void foliage::GrowFoliage() {
 	for (int j = 0; j < mySentence.size(); ++j) {
 		char currChar = mySentence.at(j);
 		if (currChar == 'F') {
-			branch newBranch(currBranchSize, currLoc, currRot);
+			branch newBranch(currBranchSize, currLoc, currRot, myColor);
 			myFoliage.push_back(newBranch);
 			//update currLoc
 			currLoc = CalculateNextLoc(currLoc, currRot, currBranchSize.x);
@@ -37,7 +37,8 @@ void foliage::GrowFoliage() {
 			currRot += updatedRot;
 		}
 		else if (currChar == '-') {
-			currRot -= updatedRot;
+			float temp = updatedRot;
+			currRot -= temp;
 		}
 		else if (currChar == '[') {
 			LocStack.push(currLoc);

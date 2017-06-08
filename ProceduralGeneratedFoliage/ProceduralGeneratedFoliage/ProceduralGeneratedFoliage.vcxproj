@@ -95,7 +95,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>D:\SFML-2.4.0\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-main.lib;sfml-system.lib;sfml-audio.lib;sfml-window.lib;sfml-network.lib;sfml-graphics.lib;openal32.lib;</AdditionalDependencies>
+      <AdditionalDependencies>sfml-main-d.lib;sfml-system-d.lib;sfml-audio-d.lib;sfml-window-d.lib;sfml-network-d.lib;sfml-graphics-d.lib;openal32.lib;</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -156,12 +156,19 @@
     <ClCompile Include="foliage.cpp" />
     <ClCompile Include="LSystem.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="UserInterface.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="branch.h" />
     <ClInclude Include="config.h" />
     <ClInclude Include="foliage.h" />
     <ClInclude Include="LSystem.h" />
+    <ClInclude Include="UserInterface.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="ColorText.png" />
+    <Image Include="DensityText.png" />
+    <Image Include="DirectionText.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
