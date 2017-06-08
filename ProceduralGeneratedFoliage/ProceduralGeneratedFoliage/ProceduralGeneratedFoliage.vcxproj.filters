@@ -21,12 +21,24 @@
     <ClCompile Include="branch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="foliage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="branch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="foliage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

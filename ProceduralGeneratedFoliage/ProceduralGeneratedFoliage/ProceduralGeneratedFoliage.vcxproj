@@ -153,11 +153,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="branch.cpp" />
+    <ClCompile Include="foliage.cpp" />
+    <ClCompile Include="LSystem.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="branch.h" />
     <ClInclude Include="config.h" />
+    <ClInclude Include="foliage.h" />
+    <ClInclude Include="LSystem.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
