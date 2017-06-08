@@ -7,9 +7,9 @@ int main()
 	std::vector<foliage> Bush;
 
 	string axiom = "F";	
-	int height = 5;
-	float branchLength = 15;
-	float branchWidth = 1;
+	int height = 4;
+	float branchLength = 7;
+	float branchWidth = 0.5;
 	sf::Vector2f currBranchSize = sf::Vector2f(branchLength, branchWidth);
 	sf::Vector2f currLoc = sf::Vector2f(WINDOW_WIDTH / 2, WINDOW_HEIGHT);
 	float currRot = -90;
@@ -18,10 +18,6 @@ int main()
 	//sfml drawing
 	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "SFML works!");
 
-	foliage foliage1(height, axiom, currBranchSize, currLoc, currRot, updatedRot);
-	foliage1.GrowFoliage();
-	Bush.push_back(foliage1);
-
 	while (window.isOpen())
 	{
 		sf::Event event;
@@ -29,6 +25,12 @@ int main()
 		{
 			if (event.type == sf::Event::Closed)
 				window.close();
+
+			if (event.type == sf::Event::MouseButtonReleased) {
+				foliage newFoliage(height, axiom, currBranchSize, sf::Vector2f(sf::Mouse::getPosition(window)), currRot, updatedRot);
+				newFoliage.GrowFoliage();
+				Bush.push_back(newFoliage);
+			}
 		}
 
 		window.clear();
