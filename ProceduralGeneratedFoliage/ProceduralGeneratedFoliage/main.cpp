@@ -1,20 +1,12 @@
 #include "config.h"
-#include "foliage.h"
+#include "bush.h"
 #include "UserInterface.h"
 
 int main()
 {
 	//bush init
-	std::vector<foliage> Bush;
-	string axiom = "F";	
-	int height = 4;
-	float branchLength = 7;
-	float branchWidth = 0.6;
-	sf::Vector2f currBranchSize = sf::Vector2f(branchLength, branchWidth);
-	sf::Vector2f currLoc = sf::Vector2f(WINDOW_WIDTH / 2, WINDOW_HEIGHT);
-	float currRot = -90;
-	float updatedRot = 15;
-	
+	bush b = bush();
+		
 	//user interface init
 	UserInterface UI = UserInterface();
 
@@ -42,9 +34,7 @@ int main()
 				window.close();
 
 			if (event.type == sf::Event::MouseButtonReleased) {
-				foliage newFoliage(height, axiom, currBranchSize, sf::Vector2f(sf::Mouse::getPosition(window)), currRot, updatedRot);
-				newFoliage.GrowFoliage();
-				Bush.push_back(newFoliage);
+				b.GrowBush(sf::Vector2f(sf::Mouse::getPosition(window)));
 			}
 		}
 
@@ -61,7 +51,7 @@ int main()
 		
 
 		//draw bush
-		for (foliage f : Bush) {
+		for (foliage f : b.myBush) {
 			for (branch b : f.myFoliage) {
 				window.draw(b.Line);
 			}

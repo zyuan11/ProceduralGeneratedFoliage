@@ -30,6 +30,7 @@ void foliage::GrowFoliage() {
 		if (currChar == 'F') {
 			branch newBranch(currBranchSize, currLoc, currRot, myColor);
 			myFoliage.push_back(newBranch);
+			
 			//update currLoc
 			currLoc = CalculateNextLoc(currLoc, currRot, currBranchSize.x);
 		}
@@ -37,8 +38,7 @@ void foliage::GrowFoliage() {
 			currRot += updatedRot;
 		}
 		else if (currChar == '-') {
-			float temp = updatedRot;
-			currRot -= temp;
+			currRot -= updatedRot;
 		}
 		else if (currChar == '[') {
 			LocStack.push(currLoc);
