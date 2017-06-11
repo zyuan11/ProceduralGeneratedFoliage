@@ -5,7 +5,9 @@ UserInterface::UserInterface() {
 	InfoSetup();
 	BarSetup();
 	SelectSetup();
-	AddToDrawable();
+	
+	currDensity = MEDIAM;
+	currDirection = MIDDLE;
 }
 
 void UserInterface::backgroundSetup() {
@@ -42,7 +44,7 @@ void UserInterface::BarSetup() {
 void UserInterface::SelectSetup() {
 	DensitySelect.setSize(SELECT_SIZE);
 	DensitySelect.setOutlineThickness(SELECT_OUTLINE_THINKNESS);
-	DensitySelect.setPosition(DENSITY_SELECT_POS);
+	DensitySelect.setPosition(DENSITY_SELECT_MEDIAM_POS);
 	DensitySelect.setFillColor(SELECT_COLOR);
 	DensitySelect.setOutlineColor(SELECT_OUTLINE_COLOR);
 	
@@ -59,13 +61,66 @@ void UserInterface::SelectSetup() {
 	ColorSelect.setOutlineColor(SELECT_OUTLINE_COLOR);
 }
 
-void UserInterface::AddToDrawable() {
-	Drawable.push_back(background);
-	Drawable.push_back(DensityBar);
-	Drawable.push_back(DirectionBar);
-	Drawable.push_back(ColorBar);
-	Drawable.push_back(DensitySelect);
-	Drawable.push_back(DirectionSelect);
-	Drawable.push_back(ColorSelect);
+Arrow UserInterface::isUpdatingDensity(sf::Vector2f cursorPos) {
+	if ((cursorPos.y <= DENSTIY_SELECT_HEIGHT + 20) && (cursorPos.y >= DENSTIY_SELECT_HEIGHT - 20)) {
+		if (cursorPos.x > DensitySelect.getPosition().x)
+			return GoRight;
+		else
+			return GoLeft;
+	}
+	else
+		return Stay;
+}
+void UserInterface::UpdateDensity(sf::Vector2f cursorPos) {
+	Arrow dir_i = isUpdatingDensity(cursorPos);
+
+	switch (dir_i) {
+	case Stay:
+		break;
+	case GoRight:
+		switch (currDensity) {
+		case LOW:
+			currDensity = MEDIAM;
+			break;
+		case MEDIAM:
+			currDensity = HIGH;
+			break;
+		case HIGH:
+			break;
+		}
+		UpdateDensityUI();
+		break;
+	case GoLeft:
+		switch (currDensity) {
+		case LOW:
+			break;
+		case MEDIAM:
+			currDensity = LOW;
+			break;
+		case HIGH:
+			currDensity = MEDIAM;
+			break;
+		}
+		UpdateDensityUI();
+	}
+}
+void UserInterface::UpdateDensityUI() {
+	switch (currDensity) {
+	case LOW:
+		DensitySelect.setPosition(DENSITY_SELECT_LOW_POS);
+		break;
+	case MEDIAM:
+		DensitySelect.setPosition(DENSITY_SELECT_MEDIAM_POS);
+		break;
+	case HIGH:
+		DensitySelect.setPosition(DENSITY_SELECT_HIGH_POS);
+		break;
+	}
+}
+Density UserInterface::GetCurrDensity() {
+	return currDensity;
 }
 
+
+
+Direction GetCurrDirect();

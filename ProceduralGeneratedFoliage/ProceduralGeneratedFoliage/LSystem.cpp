@@ -6,7 +6,7 @@ void LSystem::InitalizeLSystem(string axiom_i, int height_i){
 }
 
 void LSystem::InitalizeRules() {
-	Rules['F'] = "FF+[+F-F]-[-F+F]";
+	Rules['F'] = "FF+[+F-F-F]-[-F+F+F]";
 }
 
 string LSystem::Generate() {

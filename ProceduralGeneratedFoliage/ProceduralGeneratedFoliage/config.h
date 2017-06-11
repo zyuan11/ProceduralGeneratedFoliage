@@ -33,9 +33,19 @@ using namespace std;
 #define SELECT_OUTLINE_COLOR sf::Color(51, 51, 51)
 #define SELECT_SIZE sf::Vector2f(20, 20)
 #define SELECT_OUTLINE_THINKNESS 2
-#define DENSITY_SELECT_POS sf::Vector2f(190, 225)
+
+#define DENSTIY_SELECT_HEIGHT 225
+#define DENSITY_SELECT_MEDIAM_POS sf::Vector2f(190, DENSTIY_SELECT_HEIGHT)
+#define DENSITY_SELECT_LOW_POS sf::Vector2f(20, DENSTIY_SELECT_HEIGHT)
+#define DENSITY_SELECT_HIGH_POS sf::Vector2f(360, DENSTIY_SELECT_HEIGHT)
+
 #define DIRECTION_SELECT_POS sf::Vector2f(190, 375)
 #define COLOR_SELECT_POS sf::Vector2f(190, 525)
+
+
+enum Arrow {GoLeft, Stay, GoRight};
+enum Density {LOW = 0, MEDIAM = 1, HIGH = 2};
+enum Direction {LEFT, MIDDLE, RIGHT};
 
 
 

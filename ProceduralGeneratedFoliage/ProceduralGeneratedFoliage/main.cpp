@@ -34,21 +34,35 @@ int main()
 				window.close();
 
 			if (event.type == sf::Event::MouseButtonReleased) {
-				b.GrowBush(sf::Vector2f(sf::Mouse::getPosition(window)));
+				sf::Vector2f clickPos = sf::Vector2f(sf::Mouse::getPosition(window));
+				
+				//click to give user input
+				if (clickPos.x <= USERINTERFACE_WIDTH) {
+					UI.UpdateDensity(clickPos);
+				}
+				else {
+					Density density_i = UI.GetCurrDensity();
+					b.GrowBush(sf::Vector2f(sf::Mouse::getPosition(window)), density_i);
+				}
 			}
+
+
 		}
 
 		window.clear();
 
-		//draw UI
-		for (auto r : UI.Drawable) {
-			window.draw(r);
-		}
 
+		//draw UI
+		window.draw(UI.background);
 		window.draw(UI.DensityInfo);
 		window.draw(UI.DirectionInfo);
 		window.draw(UI.ColorInfo);
-		
+		window.draw(UI.DensityBar);
+		window.draw(UI.DirectionBar);
+		window.draw(UI.ColorBar);
+		window.draw(UI.DensitySelect);
+		window.draw(UI.DirectionSelect);
+		window.draw(UI.ColorSelect);
 
 		//draw bush
 		for (foliage f : b.myBush) {
