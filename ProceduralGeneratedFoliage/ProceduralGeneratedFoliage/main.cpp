@@ -43,14 +43,15 @@ int main()
 				}
 				else {
 					Density density_i = UI.GetCurrDensity();
+					b.clear();
 					b.GrowBush(sf::Vector2f(sf::Mouse::getPosition(window)), density_i);
+					
 				}
 			}
 
 		}
 
 		window.clear();
-
 
 		//draw UI
 		window.draw(UI.background);
@@ -65,6 +66,7 @@ int main()
 		window.draw(UI.ColorSelect);
 
 		//draw bush
+		
 		for (foliage f : b.myBush) {
 			for (branch b : f.myFoliage) {
 				window.draw(b.Line);

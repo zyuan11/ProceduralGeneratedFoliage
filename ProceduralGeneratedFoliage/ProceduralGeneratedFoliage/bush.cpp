@@ -19,8 +19,7 @@ void bush::FoliageSetup() {
 		sf::Vector2f newPos = GenerateStartingPos();
 		
 		cout << "this foliage growing from x: " << newPos.x << " y: " << newPos.y << endl;
-		OriginPosOfFoliages.push_back(newPos);
-
+		
 		int height = GenerateRandomHeight();
 		float updatedAngle = GenerateRandomAngle();
 		
@@ -57,4 +56,10 @@ sf::Vector2f bush::GenerateStartingPos() {
 	float height = startingPos.y + (rand() % 90 - 45);
 	
 	return sf::Vector2f(width, height);
+}
+
+void bush::clear() {
+	sf::Vector2f startingPos = sf::Vector2f(0, 0);
+	NumOfFoliages = 0;
+	myBush.clear();
 }

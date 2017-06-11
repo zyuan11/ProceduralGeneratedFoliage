@@ -6,7 +6,6 @@ class bush {
 	Density DensityOfBush;
 
 	int NumOfFoliages;
-	std::vector<sf::Vector2f> OriginPosOfFoliages;
 public:
 	std::vector<foliage> myBush;
 
@@ -17,4 +16,6 @@ public:
 	float GenerateRandomAngle();
 	int GenerateRandomHeight();
 	sf::Vector2f GenerateStartingPos();
+
+	void clear();
 };
