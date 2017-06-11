@@ -50,7 +50,7 @@ void UserInterface::SelectSetup() {
 	
 	DirectionSelect.setSize(SELECT_SIZE);
 	DirectionSelect.setOutlineThickness(SELECT_OUTLINE_THINKNESS);
-	DirectionSelect.setPosition(DIRECTION_SELECT_POS);
+	DirectionSelect.setPosition(DIRECTION_SELECT_MIDDLE_POS);
 	DirectionSelect.setFillColor(SELECT_COLOR);
 	DirectionSelect.setOutlineColor(SELECT_OUTLINE_COLOR);
 
@@ -122,5 +122,62 @@ Density UserInterface::GetCurrDensity() {
 }
 
 
+Arrow UserInterface::isUpdatingDirection(sf::Vector2f cursorPos) {
+	if ((cursorPos.y <= DIRECTION_SELECT_HEIGHT + 20) && (cursorPos.y >= DIRECTION_SELECT_HEIGHT - 20)) {
+		if (cursorPos.x > DirectionSelect.getPosition().x)
+			return GoRight;
+		else
+			return GoLeft;
+	}
+	else
+		return Stay;
+}
+void UserInterface::UpdateDirection(sf::Vector2f cursorPos) {
+	Arrow dir_i = isUpdatingDirection(cursorPos);
 
-Direction GetCurrDirect();
+	switch (dir_i) {
+	case Stay:
+		break;
+	case GoRight:
+		switch (currDirection) {
+		case LEFT:
+			currDirection = MIDDLE;
+			break;
+		case MIDDLE:
+			currDirection = RIGHT;
+			break;
+		case RIGHT:
+			break;
+		}
+		UpdateDirectionUI();
+		break;
+	case GoLeft:
+		switch (currDirection) {
+		case LEFT:
+			break;
+		case MIDDLE:
+			currDirection = LEFT;
+			break;
+		case RIGHT:
+			currDirection = MIDDLE;
+			break;
+		}
+		UpdateDirectionUI();
+	}
+}
+void UserInterface::UpdateDirectionUI() {
+	switch (currDirection) {
+	case LEFT:
+		DirectionSelect.setPosition(DIRECTION_SELECT_LEFT_POS);
+		break;
+	case MIDDLE:
+		DirectionSelect.setPosition(DIRECTION_SELECT_MIDDLE_POS);
+		break;
+	case RIGHT:
+		DirectionSelect.setPosition(DIRECTION_SELECT_RIGHT_POS);
+		break;
+	}
+}
+Direction UserInterface::GetCurrDirection() {
+	return currDirection;
+}

@@ -8,6 +8,9 @@ class UserInterface {
 	Arrow isUpdatingDensity(sf::Vector2f cursorPos);
 	void UpdateDensityUI();
 
+	Arrow isUpdatingDirection(sf::Vector2f cursorPos);
+	void UpdateDirectionUI();
+
 public:
 	sf::RectangleShape background;
 	
@@ -30,9 +33,10 @@ public:
 	void SelectSetup();
 
 	void UpdateDensity(sf::Vector2f cursorPos);
-	
+	void UpdateDirection(sf::Vector2f cursorPos);
+
 	Density GetCurrDensity();
-	Direction GetCurrDirect();
+	Direction GetCurrDirection();
 
 
 };

@@ -39,13 +39,13 @@ int main()
 				//click to give user input
 				if (clickPos.x <= USERINTERFACE_WIDTH) {
 					UI.UpdateDensity(clickPos);
+					UI.UpdateDirection(clickPos);
 				}
 				else {
 					Density density_i = UI.GetCurrDensity();
 					b.GrowBush(sf::Vector2f(sf::Mouse::getPosition(window)), density_i);
 				}
 			}
-
 
 		}
 
