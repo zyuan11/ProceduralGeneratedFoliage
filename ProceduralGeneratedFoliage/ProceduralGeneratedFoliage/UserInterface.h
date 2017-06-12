@@ -4,12 +4,16 @@
 class UserInterface {
 	Density currDensity;
 	Direction currDirection;
+	Color currColor;
 
 	Arrow isUpdatingDensity(sf::Vector2f cursorPos);
 	void UpdateDensityUI();
 
 	Arrow isUpdatingDirection(sf::Vector2f cursorPos);
 	void UpdateDirectionUI();
+
+	Arrow isUpdatingColor(sf::Vector2f cursorPos);
+	void UpdateColorUI();
 
 public:
 	sf::RectangleShape background;
@@ -34,9 +38,11 @@ public:
 
 	void UpdateDensity(sf::Vector2f cursorPos);
 	void UpdateDirection(sf::Vector2f cursorPos);
+	void UpdateColor(sf::Vector2f cursorPos);
 
 	Density GetCurrDensity();
 	Direction GetCurrDirection();
+	Color GetCurrColor();
 
 
 };

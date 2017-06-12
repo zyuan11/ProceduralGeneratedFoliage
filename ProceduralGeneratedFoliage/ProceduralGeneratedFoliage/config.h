@@ -3,6 +3,7 @@
 #include "math.h"
 #include <stdlib.h>
 #include <time.h>
+#include <stdint.h>
 
 #include <map>
 #include <string>
@@ -44,13 +45,17 @@ using namespace std;
 #define DIRECTION_SELECT_MIDDLE_POS sf::Vector2f(190, DIRECTION_SELECT_HEIGHT)
 #define DIRECTION_SELECT_RIGHT_POS sf::Vector2f(360, DIRECTION_SELECT_HEIGHT)
 
-
-#define COLOR_SELECT_POS sf::Vector2f(190, 525)
+#define COLOR_SELECT_HEIGHT 525
+#define COLOR_SELECT_RED_POS sf::Vector2f(20, COLOR_SELECT_HEIGHT)
+#define COLOR_SELECT_GREEN_POS sf::Vector2f(190, COLOR_SELECT_HEIGHT)
+#define COLOR_SELECT_BLUE_POS sf::Vector2f(360, COLOR_SELECT_HEIGHT)
 
 
 enum Arrow {GoLeft, Stay, GoRight};
 enum Density {LOW = 0, MEDIAM = 1, HIGH = 2};
 enum Direction {LEFT, MIDDLE, RIGHT};
+enum Color {RED, GREEN, BLUE};
+
 
 
 

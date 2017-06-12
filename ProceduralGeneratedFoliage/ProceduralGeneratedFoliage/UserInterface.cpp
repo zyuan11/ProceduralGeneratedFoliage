@@ -8,6 +8,7 @@ UserInterface::UserInterface() {
 	
 	currDensity = MEDIAM;
 	currDirection = MIDDLE;
+	currColor = GREEN;
 }
 
 void UserInterface::backgroundSetup() {
@@ -56,7 +57,7 @@ void UserInterface::SelectSetup() {
 
 	ColorSelect.setSize(SELECT_SIZE);
 	ColorSelect.setOutlineThickness(SELECT_OUTLINE_THINKNESS);
-	ColorSelect.setPosition(COLOR_SELECT_POS);
+	ColorSelect.setPosition(COLOR_SELECT_GREEN_POS);
 	ColorSelect.setFillColor(SELECT_COLOR);
 	ColorSelect.setOutlineColor(SELECT_OUTLINE_COLOR);
 }
@@ -181,3 +182,64 @@ void UserInterface::UpdateDirectionUI() {
 Direction UserInterface::GetCurrDirection() {
 	return currDirection;
 }
+
+Arrow UserInterface::isUpdatingColor(sf::Vector2f cursorPos) {
+	if ((cursorPos.y <= COLOR_SELECT_HEIGHT + 20) && (cursorPos.y >= COLOR_SELECT_HEIGHT - 20)) {
+		if (cursorPos.x > ColorSelect.getPosition().x)
+			return GoRight;
+		else
+			return GoLeft;
+	}
+	else
+		return Stay;
+}
+void UserInterface::UpdateColor(sf::Vector2f cursorPos) {
+	Arrow dir_i = isUpdatingColor(cursorPos);
+
+	switch (dir_i) {
+	case Stay:
+		break;
+	case GoRight:
+		switch (currColor) {
+		case RED:
+			currColor = GREEN;
+			break;
+		case GREEN:
+			currColor = BLUE;
+			break;
+		case BLUE:
+			break;
+		}
+		UpdateColorUI();
+		break;
+	case GoLeft:
+		switch (currColor) {
+		case RED:
+			break;
+		case GREEN:
+			currColor = RED;
+			break;
+		case BLUE:
+			currColor = GREEN;
+			break;
+		}
+		UpdateColorUI();
+	}
+}
+void UserInterface::UpdateColorUI() {
+	switch (currColor) {
+	case RED:
+		ColorSelect.setPosition(COLOR_SELECT_RED_POS);
+		break;
+	case GREEN:
+		ColorSelect.setPosition(COLOR_SELECT_GREEN_POS);
+		break;
+	case BLUE:
+		ColorSelect.setPosition(COLOR_SELECT_BLUE_POS);
+		break;
+	}
+}
+Color UserInterface::GetCurrColor() {
+	return currColor;
+}
+

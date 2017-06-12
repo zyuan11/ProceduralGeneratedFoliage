@@ -8,7 +8,7 @@ class foliage {
 	string mySentence;
 	LSystem myLSystem;
 
-	sf::Color myColor = sf::Color(63, 127, 103);
+	sf::Color myColor;
 	sf::Vector2f currBranchSize;
 	sf::Vector2f currLoc;
 	float currRot;
@@ -18,7 +18,7 @@ class foliage {
 public:
 	std::vector<branch> myFoliage;
 
-	foliage(int height_i, string inputSentence_i, sf::Vector2f currBranchSize_i, sf::Vector2f initLoc, float initRot, float updatedRot_i);
+	foliage(int height_i, string inputSentence_i, sf::Vector2f currBranchSize_i, sf::Vector2f initLoc, float initRot, float updatedRot_i, sf::Color color_i);
 	void BuildMyLSystem(string inputSentence_i, int height_i);
 	sf::Vector2f CalculateNextLoc(sf::Vector2f currLoc, float currRot, float branchLength);
 	void GrowFoliage();

@@ -2,9 +2,10 @@
 
 bush::bush() {}
 
-void bush::GrowBush(sf::Vector2f startingPos_i, Density density_i) {
+void bush::GrowBush(sf::Vector2f startingPos_i, Density density_i, Color color_i) {
 	startingPos = startingPos_i;
 	DensityOfBush = density_i;
+	ColorOfBush = color_i;
 
 	FoliageSetup();
 }
@@ -22,11 +23,19 @@ void bush::FoliageSetup() {
 		
 		int height = GenerateRandomHeight();
 		float updatedAngle = GenerateRandomAngle();
-		
-		foliage newFoliage(height, "F", sf::Vector2f(10, 1), newPos, -90.0f, updatedAngle);
+		sf::Color color = GetColor();
+
+		foliage newFoliage(height, "F", sf::Vector2f(10, 1), newPos, -90.0f, updatedAngle, color);
 		newFoliage.GrowFoliage();
 		myBush.push_back(newFoliage);
 	}
+}
+
+sf::Vector2f bush::GenerateStartingPos() {
+	float width = startingPos.x + (rand() % 200 - 100);
+	float height = startingPos.y + (rand() % 90 - 45);
+
+	return sf::Vector2f(width, height);
 }
 
 float bush::GenerateRandomAngle() {
@@ -46,16 +55,52 @@ float bush::GenerateRandomAngle() {
 
 	return angle;
 }
-
 int bush::GenerateRandomHeight() {
-	return (rand() % 4 + 2);
+	return (rand() % 3 + 2);
 }
 
-sf::Vector2f bush::GenerateStartingPos() {
-	float width = startingPos.x + (rand() % 200 - 100);
-	float height = startingPos.y + (rand() % 90 - 45);
+sf::Color bush::GetColor() {
+	switch (ColorOfBush) {
+	case RED:
+		return GenerateRandomRedBasedColor();
+	case GREEN:
+		return GenerateRandomGreenBasedColor();
+	case BLUE:
+		return GenerateRandomBlueBasedColor();
+	}
+}
+sf::Color bush::GenerateRandomRedBasedColor() {
+	sf::Color newColor;
 	
-	return sf::Vector2f(width, height);
+	int r = rand() % 4 + 1;
+	r = 155 + r * 20;
+	int g = rand() % 100;
+	int b = rand() % 100;
+	
+	newColor = sf::Color(sf::Uint8(r), sf::Uint8(g), sf::Uint8(b));
+	return newColor;
+}
+sf::Color bush::GenerateRandomGreenBasedColor() {
+	sf::Color newColor;
+
+	int g = rand() % 4 + 1;
+	g = 155 + g * 20;
+	int r = rand() % 150;
+	int b = rand() % 150;
+
+	newColor = sf::Color(sf::Uint8(r), sf::Uint8(g), sf::Uint8(b));
+	return newColor;
+}
+sf::Color bush::GenerateRandomBlueBasedColor() {
+	sf::Color newColor;
+
+	int b = rand() % 4 + 1;
+	b = 155 + b * 20;
+	int g = rand() % 150;
+	int r = rand() % 150;
+
+	newColor = sf::Color(sf::Uint8(r), sf::Uint8(g), sf::Uint8(b));
+	return newColor;
 }
 
 void bush::clear() {

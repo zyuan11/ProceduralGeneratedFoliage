@@ -40,12 +40,13 @@ int main()
 				if (clickPos.x <= USERINTERFACE_WIDTH) {
 					UI.UpdateDensity(clickPos);
 					UI.UpdateDirection(clickPos);
+					UI.UpdateColor(clickPos);
 				}
 				else {
 					Density density_i = UI.GetCurrDensity();
+					Color color_i = UI.GetCurrColor();
 					b.clear();
-					b.GrowBush(sf::Vector2f(sf::Mouse::getPosition(window)), density_i);
-					
+					b.GrowBush(sf::Vector2f(sf::Mouse::getPosition(window)), density_i, color_i);
 				}
 			}
 
@@ -53,6 +54,15 @@ int main()
 
 		window.clear();
 
+
+		//draw bush
+		
+		for (foliage f : b.myBush) {
+			for (branch b : f.myFoliage) {
+				window.draw(b.Line);
+			}
+		}
+		
 		//draw UI
 		window.draw(UI.background);
 		window.draw(UI.DensityInfo);
@@ -65,14 +75,6 @@ int main()
 		window.draw(UI.DirectionSelect);
 		window.draw(UI.ColorSelect);
 
-		//draw bush
-		
-		for (foliage f : b.myBush) {
-			for (branch b : f.myFoliage) {
-				window.draw(b.Line);
-			}
-		}
-		
 		window.display();
 	}
 

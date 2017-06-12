@@ -1,11 +1,12 @@
 #include "foliage.h"
 
-foliage::foliage(int height_i, string inputSentence_i, sf::Vector2f currBranchSize_i, sf::Vector2f initLoc, float initRot, float updatedRot_i) {
+foliage::foliage(int height_i, string inputSentence_i, sf::Vector2f currBranchSize_i, sf::Vector2f initLoc, float initRot, float updatedRot_i, sf::Color color_i) {
 	BuildMyLSystem(inputSentence_i, height_i);
 	currBranchSize = currBranchSize_i;
 	currLoc = initLoc;
 	currRot = initRot;
 	updatedRot = updatedRot_i;
+	myColor = color_i;
 }
 
 

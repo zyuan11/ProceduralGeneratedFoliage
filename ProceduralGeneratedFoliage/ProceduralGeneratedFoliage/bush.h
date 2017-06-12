@@ -4,18 +4,26 @@
 class bush {
 	sf::Vector2f startingPos;
 	Density DensityOfBush;
+	Color ColorOfBush;
 
 	int NumOfFoliages;
+
+	sf::Color GenerateRandomRedBasedColor();
+	sf::Color GenerateRandomGreenBasedColor();
+	sf::Color GenerateRandomBlueBasedColor();
 public:
 	std::vector<foliage> myBush;
 
 	bush();
-	void GrowBush(sf::Vector2f startingPos_i, Density density_i);
+	void GrowBush(sf::Vector2f startingPos_i, Density density_i, Color color_i);
 	void FoliageSetup();
 
+	sf::Color GetColor();
 	float GenerateRandomAngle();
 	int GenerateRandomHeight();
 	sf::Vector2f GenerateStartingPos();
 
 	void clear();
+
+	
 };
