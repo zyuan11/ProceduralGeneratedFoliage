@@ -21,6 +21,15 @@ int main()
 	sf::Texture ColorInfoTexture = sf::Texture();
 	ColorInfoTexture.loadFromFile("ColorText.png");
 	UI.ColorInfo.setTexture(&ColorInfoTexture);
+
+	sf::Texture ColorBarTexture = sf::Texture();
+	ColorBarTexture.loadFromFile("ColorBar.png");
+	UI.ColorBar.setTexture(&ColorBarTexture);
+
+	sf::Texture ClickToEditTexture = sf::Texture();
+	ClickToEditTexture.loadFromFile("ClickToEdit.png");
+	UI.ClickToEdit.setTexture(&ClickToEditTexture);
+
 	
 	//sfml drawing
 	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "SFML works!");
@@ -75,6 +84,7 @@ int main()
 		window.draw(UI.DensitySelect);
 		window.draw(UI.DirectionSelect);
 		window.draw(UI.ColorSelect);
+		window.draw(UI.ClickToEdit);
 
 		window.display();
 	}

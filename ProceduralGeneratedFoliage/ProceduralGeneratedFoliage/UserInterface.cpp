@@ -24,8 +24,11 @@ void UserInterface::InfoSetup() {
 	DirectionInfo.setSize(INFO_SIZE);
 	DirectionInfo.setPosition(DIRECTION_INFO_POS);
 
-	ColorInfo.setSize(INFO_SIZE);
+	ColorInfo.setSize(SECOND_INFO_SIZE);
 	ColorInfo.setPosition(COLOR_INFO_POS);
+
+	ClickToEdit.setSize(SECOND_INFO_SIZE);
+	ClickToEdit.setPosition(EDIT_INFO_POS);
 }
 
 void UserInterface::BarSetup() {
@@ -39,7 +42,7 @@ void UserInterface::BarSetup() {
 
 	ColorBar.setSize(BAR_SIZE);
 	ColorBar.setPosition(COLOR_BAR_POS);
-	ColorBar.setFillColor(BAR_COLOR);
+	//ColorBar.setFillColor(BAR_COLOR);
 }
 
 void UserInterface::SelectSetup() {

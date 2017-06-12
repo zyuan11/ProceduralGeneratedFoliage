@@ -55,6 +55,12 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="ClickToEdit.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="ColorBar.png">
+      <Filter>Resource Files</Filter>
+    </Image>
     <Image Include="ColorText.png">
       <Filter>Resource Files</Filter>
     </Image>

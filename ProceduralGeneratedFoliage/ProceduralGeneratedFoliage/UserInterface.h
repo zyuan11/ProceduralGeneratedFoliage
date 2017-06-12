@@ -30,6 +30,8 @@ public:
 	sf::RectangleShape DirectionSelect;
 	sf::RectangleShape ColorSelect;
 
+	sf::RectangleShape ClickToEdit;
+
 	UserInterface();
 	void backgroundSetup();
 	void InfoSetup();

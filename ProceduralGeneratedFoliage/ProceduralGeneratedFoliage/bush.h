@@ -19,8 +19,9 @@ public:
 	void GrowBush(sf::Vector2f startingPos_i, Density density_i, Color color_i, Direction dir_i);
 	void FoliageSetup();
 
+	int GenerateNumOfBush();
+
 	sf::Color GetColor();
-	float GenerateRandomAngle();
 	int GenerateRandomHeight();
 	sf::Vector2f GenerateStartingPos();
 

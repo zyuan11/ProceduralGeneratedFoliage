@@ -19,10 +19,12 @@ using namespace std;
 
 #define USERINTERFACE_WIDTH 400
 
-#define INFO_SIZE sf::Vector2f(360, 60)
-#define DENSITY_INFO_POS sf::Vector2f(30, 150)
-#define DIRECTION_INFO_POS sf::Vector2f(30, 300)
-#define COLOR_INFO_POS sf::Vector2f(30, 450)
+#define INFO_SIZE sf::Vector2f(380, 80)
+#define DENSITY_INFO_POS sf::Vector2f(10, 140)
+#define DIRECTION_INFO_POS sf::Vector2f(10, 290)
+#define SECOND_INFO_SIZE sf::Vector2f(380, 60)
+#define COLOR_INFO_POS sf::Vector2f(10, 440)
+#define EDIT_INFO_POS sf::Vector2f(10, 700)
 
 #define BAR_COLOR sf::Color(51, 51, 51)
 #define BAR_SIZE sf::Vector2f(340, 10)

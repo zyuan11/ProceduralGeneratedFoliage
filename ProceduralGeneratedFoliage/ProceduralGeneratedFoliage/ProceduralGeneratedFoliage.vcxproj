@@ -168,6 +168,8 @@
     <ClInclude Include="UserInterface.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="ClickToEdit.png" />
+    <Image Include="ColorBar.png" />
     <Image Include="ColorText.png" />
     <Image Include="DensityText.png" />
     <Image Include="DirectionText.png" />
