@@ -18,8 +18,8 @@ class foliage {
 public:
 	std::vector<branch> myFoliage;
 
-	foliage(int height_i, string inputSentence_i, sf::Vector2f currBranchSize_i, sf::Vector2f initLoc, float initRot, float updatedRot_i, sf::Color color_i);
-	void BuildMyLSystem(string inputSentence_i, int height_i);
+	foliage(int height_i, string inputSentence_i, sf::Vector2f currBranchSize_i, sf::Vector2f initLoc, float initRot, float updatedRot_i, sf::Color color_i, Direction dir_i);
+	void BuildMyLSystem(string inputSentence_i, int height_i, Direction dir_i);
 	sf::Vector2f CalculateNextLoc(sf::Vector2f currLoc, float currRot, float branchLength);
 	void GrowFoliage();
 };

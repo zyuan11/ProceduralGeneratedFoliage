@@ -7,6 +7,13 @@ class LSystem {
 	int height;
 public:
 	void InitalizeLSystem(string axiom_i, int height_i);
-	void InitalizeRules();
+	void InitalizeRules(Direction dir_i);
 	string Generate();
+
+	string GenerateRule(Direction dir_i);
+	string GetFOrFF();
+	
+	string GenerateMiddleDirRule();
+	string GenerateLeftDirRule();
+	string GenerateRightDirRule();
 };

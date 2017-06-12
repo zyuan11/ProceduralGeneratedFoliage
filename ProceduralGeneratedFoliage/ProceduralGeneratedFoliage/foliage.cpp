@@ -1,7 +1,7 @@
 #include "foliage.h"
 
-foliage::foliage(int height_i, string inputSentence_i, sf::Vector2f currBranchSize_i, sf::Vector2f initLoc, float initRot, float updatedRot_i, sf::Color color_i) {
-	BuildMyLSystem(inputSentence_i, height_i);
+foliage::foliage(int height_i, string inputSentence_i, sf::Vector2f currBranchSize_i, sf::Vector2f initLoc, float initRot, float updatedRot_i, sf::Color color_i, Direction dir_i) {
+	BuildMyLSystem(inputSentence_i, height_i, dir_i);
 	currBranchSize = currBranchSize_i;
 	currLoc = initLoc;
 	currRot = initRot;
@@ -10,9 +10,9 @@ foliage::foliage(int height_i, string inputSentence_i, sf::Vector2f currBranchSi
 }
 
 
-void foliage::BuildMyLSystem(string inputSentence_i, int height_i) {
+void foliage::BuildMyLSystem(string inputSentence_i, int height_i, Direction dir_i) {
 	myLSystem.InitalizeLSystem(inputSentence_i, height_i);
-	myLSystem.InitalizeRules();
+	myLSystem.InitalizeRules(dir_i);
 	mySentence = myLSystem.Generate();
 }
 
@@ -23,7 +23,6 @@ sf::Vector2f foliage::CalculateNextLoc(sf::Vector2f currLoc, float currRot, floa
 	nextY = currLoc.y + branchLength * sin(currRot * PI / 180);
 	return sf::Vector2f(nextX, nextY);
 }
-
 void foliage::GrowFoliage() {
 	//turtle drawing
 	for (int j = 0; j < mySentence.size(); ++j) {

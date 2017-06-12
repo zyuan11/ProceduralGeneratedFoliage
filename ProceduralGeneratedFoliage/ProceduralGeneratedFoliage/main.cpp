@@ -45,8 +45,9 @@ int main()
 				else {
 					Density density_i = UI.GetCurrDensity();
 					Color color_i = UI.GetCurrColor();
+					Direction dir_i = UI.GetCurrDirection();
 					b.clear();
-					b.GrowBush(sf::Vector2f(sf::Mouse::getPosition(window)), density_i, color_i);
+					b.GrowBush(sf::Vector2f(sf::Mouse::getPosition(window)), density_i, color_i, dir_i);
 				}
 			}
 

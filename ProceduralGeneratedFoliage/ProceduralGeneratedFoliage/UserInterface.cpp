@@ -122,7 +122,6 @@ Density UserInterface::GetCurrDensity() {
 	return currDensity;
 }
 
-
 Arrow UserInterface::isUpdatingDirection(sf::Vector2f cursorPos) {
 	if ((cursorPos.y <= DIRECTION_SELECT_HEIGHT + 20) && (cursorPos.y >= DIRECTION_SELECT_HEIGHT - 20)) {
 		if (cursorPos.x > DirectionSelect.getPosition().x)

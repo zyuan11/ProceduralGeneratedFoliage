@@ -2,18 +2,22 @@
 
 bush::bush() {}
 
-void bush::GrowBush(sf::Vector2f startingPos_i, Density density_i, Color color_i) {
+void bush::GrowBush(sf::Vector2f startingPos_i, Density density_i, Color color_i, Direction dir_i) {
 	startingPos = startingPos_i;
 	DensityOfBush = density_i;
 	ColorOfBush = color_i;
+	DirOfBush = dir_i;
 
 	FoliageSetup();
 }
 
 void bush::FoliageSetup() {
 	srand(time(NULL));
+
 	NumOfFoliages = rand() % 4 + 2;
-	
+	//NumOfFoliages = 1;
+
+
 	cout << "NumOfFoliages: " << NumOfFoliages << endl;
 
 	for (int i = 0; i < NumOfFoliages; ++i) {
@@ -24,16 +28,16 @@ void bush::FoliageSetup() {
 		int height = GenerateRandomHeight();
 		float updatedAngle = GenerateRandomAngle();
 		sf::Color color = GetColor();
-
-		foliage newFoliage(height, "F", sf::Vector2f(10, 1), newPos, -90.0f, updatedAngle, color);
+		
+		foliage newFoliage(height, "F", sf::Vector2f(10, 1), newPos, -90.0f, updatedAngle, color, DirOfBush);
 		newFoliage.GrowFoliage();
 		myBush.push_back(newFoliage);
 	}
 }
 
 sf::Vector2f bush::GenerateStartingPos() {
-	float width = startingPos.x + (rand() % 200 - 100);
-	float height = startingPos.y + (rand() % 90 - 45);
+	float width = startingPos.x + (rand() % 400 - 200);
+	float height = startingPos.y + (rand() % 200 - 100);
 
 	return sf::Vector2f(width, height);
 }
