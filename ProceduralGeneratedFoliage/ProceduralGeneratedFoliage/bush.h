@@ -20,6 +20,7 @@ public:
 	void FoliageSetup();
 
 	int GenerateNumOfBush();
+	int GenerateHeight();
 
 	sf::Color GetColor();
 	int GenerateRandomHeight();

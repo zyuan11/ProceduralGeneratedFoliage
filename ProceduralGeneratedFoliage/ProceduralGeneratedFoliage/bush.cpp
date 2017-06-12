@@ -21,9 +21,7 @@ void bush::FoliageSetup() {
 	for (int i = 0; i < NumOfFoliages; ++i) {
 		sf::Vector2f newPos = GenerateStartingPos();
 		
-		cout << "this foliage growing from x: " << newPos.x << " y: " << newPos.y << endl;
-		
-		int height = GenerateRandomHeight();
+		int height = GenerateHeight();
 		sf::Color color = GetColor();
 		
 		foliage newFoliage(height, "F", sf::Vector2f(10, 1), newPos, -90.0f, 25.0f, color, DirOfBush);
@@ -42,13 +40,35 @@ int bush::GenerateNumOfBush() {
 		return rand() % 2 + 5;
 	}
 }
+int bush::GenerateHeight() {
+	switch (DensityOfBush) {
+	case LOW:
+		return rand() % 1 + 2;
+	case MEDIAM:
+		return rand() % 2 + 2;
+	case HIGH:
+		return rand() % 3 + 2;
+	}
+}
+
 
 sf::Vector2f bush::GenerateStartingPos() {
 	
+	int factor;
+
+	switch (DensityOfBush) {
+	case LOW:
+		factor = (rand() % 2 + 2);
+	case MEDIAM:
+		factor = (rand() % 3 + 2);
+	case HIGH:
+		factor = (rand() % 4 + 2);
+	}
+
 	int randNum = rand() % 5 + 1;
-	float width = startingPos.x + randNum * 60;
+	float width = startingPos.x + randNum * 10 * factor;
 	randNum = rand() % 5 + 1;
-	float height = startingPos.y + randNum * 20;
+	float height = startingPos.y + randNum * 3 * factor;
 
 	return sf::Vector2f(width, height);
 }

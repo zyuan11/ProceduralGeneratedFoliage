@@ -42,7 +42,6 @@ void UserInterface::BarSetup() {
 
 	ColorBar.setSize(BAR_SIZE);
 	ColorBar.setPosition(COLOR_BAR_POS);
-	//ColorBar.setFillColor(BAR_COLOR);
 }
 
 void UserInterface::SelectSetup() {
